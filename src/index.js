@@ -9,9 +9,8 @@ import { getWeatherDataFor } from "./api-interactions";
 
 
 // practice console-logging weather data
-getWeatherDataFor("New York").then((data) => {
+getWeatherDataFor("Somerville").then((data) => {
     console.log("Guess What's Comming!");
+    console.log(`${data.location.name}, ${data.location.region}, ${data.location.country}`);
     console.log(data.current);
-    console.log(data.location);
-    
 });
