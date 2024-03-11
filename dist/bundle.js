@@ -1,6 +1,1 @@
-(() => {
-  const e = document.createElement("h1");
-  (e.textContent = "Hello There!"),
-    e.classList.add("blur-back"),
-    document.body.appendChild(e);
-})();
+(()=>{"use strict";(async function(e){let o=await fetch("https://api.weatherapi.com/v1/current.json?key=6ec50ea541c74813b6d174204240803&q=New York");return await o.json()})().then((e=>{console.log("Guess What's Comming!"),console.log(e.current),console.log(e.location)}))})();
