@@ -12,7 +12,7 @@ getForecastDataFor("Boston", 3).then((data) => {
 
 const body = document.querySelector('body');
 
-fetch('https://api.giphy.com/v1/gifs/translate?api_key=DQzLlyYAdHOpDOcKi4YUH5xjz7dMJ9Vs&s=cats-light-sabers', {mode:'cors'})
+fetch('https://api.giphy.com/v1/gifs/translate?api_key=DQzLlyYAdHOpDOcKi4YUH5xjz7dMJ9Vs&s=weather', {mode:'cors'})
         .then((response) => response.json())
         .then((response) => {
             body.style.backgroundImage = `url(${response.data.images.original.url})`;

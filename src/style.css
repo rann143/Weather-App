@@ -36,7 +36,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   width: 50%;
-  background-color: rgb(181, 234, 183);
+  background-color: rgba(181, 234, 183, 0.911);
   padding: 50px;
   border-radius: 50px;
 }
