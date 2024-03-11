@@ -1,6 +1,7 @@
 import { getForecastDataFor } from "./api-interactions";
 
 const displayHandler = (function handleDisplay() {
+
   const locationInput = document.querySelector("#location-input");
   const searchBtn = document.querySelector(".search-btn");
   const locationTitle = document.querySelector("h2");
@@ -98,7 +99,7 @@ const displayHandler = (function handleDisplay() {
   return {
     toggleFTemp,
     resetSpans,
-  };
+  }
     
 })();
 

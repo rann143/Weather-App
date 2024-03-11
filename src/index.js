@@ -1,7 +1,5 @@
-import {
-  getForecastDataFor,
-} from "./api-interactions";
-import { displayHandler } from "./display";
+import { getForecastDataFor } from "./api-interactions";
+import  displayHandler from "./display";
 
 
 getForecastDataFor("Boston", 3).then((data) => {
