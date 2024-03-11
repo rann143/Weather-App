@@ -8,23 +8,24 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <h1>Getchya Weathah Report</h1>
+    <h1>Getchya Weather</h1>
 
     <div class="container">
-      <div>
-        <form action="">
+      <div class="form-container">
+        <form action="" >
           <input
             type="text"
             placeholder="location"
             name="location"
+            class="dancing-script"
             id="location-input"
           />
-          <button type="submit" class="search-btn">Search</button>
+          <button type="submit" class="dancing-script" id="search-btn">Search</button>
         </form>
-        <button type="button" id="temp-btn"></button>
+        <button type="button" id="temp-btn" class="caveat-font"></button>
       </div>
 
-      <h2></h2>
+      <h2>Where you wanna go?</h2>
       <div class="display">
         <div class="current-weather-item">
           Day & Time: <span class="current-content" id="current-time"></span>

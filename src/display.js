@@ -3,7 +3,7 @@ import { getForecastDataFor } from "./api-interactions";
 const displayHandler = (function handleDisplay() {
 
   const locationInput = document.querySelector("#location-input");
-  const searchBtn = document.querySelector(".search-btn");
+  const searchBtn = document.querySelector("#search-btn");
   const locationTitle = document.querySelector("h2");
   const tempBtn = document.querySelector("#temp-btn");
 
@@ -45,8 +45,9 @@ const displayHandler = (function handleDisplay() {
   tempBtn.addEventListener("click", (e) => {
   
       toggleFTemp();
-      changeTempSpan();
       tempBtn.textContent = fahrenheit ? "°F" : "°C";
+      changeTempSpan();
+      
   });
 
     // Reset  weather data displayed content
