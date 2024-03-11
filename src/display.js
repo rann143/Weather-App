@@ -12,7 +12,7 @@ const displayHandler = (function handleDisplay() {
   const sunsetSpan = document.querySelector("#current-sunset");
   const loadingDiv = document.querySelector(".loading");
     
-  let storedData; // created variable to store json data that is fetched from searching a location
+  let storedData; // created variable to store the weather data from the most-recently searched location
 
   function getLocationValue() {
     let locationValue = locationInput.value;
@@ -20,15 +20,17 @@ const displayHandler = (function handleDisplay() {
   }
   
   tempBtn.textContent = "°F"; // set tempBtn text to "F"
-    let fahrenheit = true; // create boolean for which temperature type is set
-    console.log(fahrenheit);
-  // create function to switch between F & C
+  let fahrenheit = true; // create boolean for which temperature type is set
+  console.log(fahrenheit);
+  
+    // function that switches between °F/°C
   function toggleFTemp() {
     fahrenheit = !fahrenheit;
     console.log(fahrenheit);
     return fahrenheit;
   }
 
+    // changes the displayed content of the temperature span to °F/°C
   function changeTempSpan() {
    
       if (fahrenheit === true) {
@@ -38,6 +40,7 @@ const displayHandler = (function handleDisplay() {
         }
   }
 
+    // Event listener for the °F/°C Btn to toggle the temperature
   tempBtn.addEventListener("click", (e) => {
   
       toggleFTemp();
@@ -45,6 +48,7 @@ const displayHandler = (function handleDisplay() {
       tempBtn.textContent = fahrenheit ? "°F" : "°C";
   });
 
+    // Reset  weather data displayed content
   function resetSpans() {
     timeSpan.textContent = "";
     tempSpan.textContent = "";
@@ -52,6 +56,7 @@ const displayHandler = (function handleDisplay() {
     sunsetSpan.textContent = "";
   }
 
+    // fetches and displays content from searched location
   searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -88,11 +93,13 @@ const displayHandler = (function handleDisplay() {
       return storedData;
       
   });
+    
 
   return {
     toggleFTemp,
     resetSpans,
   };
+    
 })();
 
 export default { displayHandler };
