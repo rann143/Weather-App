@@ -1,8 +1,48 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1 {
   color: rgb(40, 121, 76);
 }
 
-.blur-back {
-  background-color: rgba(0, 0, 0, 0.408);
-  backdrop-filter: blur(3px);
+h2{
+  margin-top: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.display {
+  margin-top: 5px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.api-credit {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-left: 10px;
+}
+
+.current-weather-item {
+  margin: 10px 0px 0px 0px;
+  font-weight: 600;
+}
+
+span {
+  font-weight: 400;
+}
+
+.loading {
+  margin: 10px 0px 0px 0px;
+  color: red;
 }
