@@ -8,7 +8,7 @@ h1 {
   color: rgb(40, 121, 76);
 }
 
-h2{
+h2 {
   margin-top: 30px;
 }
 
@@ -45,4 +45,14 @@ span {
 .loading {
   margin: 10px 0px 0px 0px;
   color: red;
+}
+
+form {
+  display: inline-block;
+}
+
+#temp-btn {
+  margin-left: 3px;
+  height: 20px;
+  width: 30px;
 }
