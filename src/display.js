@@ -96,12 +96,6 @@ const displayHandler = (function handleDisplay() {
       
   });
     
-
-  return {
-    toggleFTemp,
-    resetSpans,
-  }
-    
 })();
 
 export default { displayHandler };
