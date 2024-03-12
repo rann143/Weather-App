@@ -35,8 +35,8 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  height: 15rem;
+  width: 750px;
+  height: 500px;
   background-color: rgba(181, 234, 183, 0.911);
   padding: 50px;
   border-radius: 50px;
@@ -51,8 +51,9 @@ h2 {
 .display {
   margin-top: 5px;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: center;
+  
   flex-wrap: wrap;
 }
 
@@ -132,3 +133,29 @@ input {
   font-size: 1rem;
   font-style: normal;
 }
+
+#hour-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#current-24hour {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#current-24hour > div {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #current-24hour > div > div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+} */

@@ -12,6 +12,7 @@ const displayHandler = (function handleDisplay() {
   const weatherSpan = document.querySelector("#current-weather");
   const sunsetSpan = document.querySelector("#current-sunset");
   const loadingDiv = document.querySelector(".loading");
+  const current24Hour = document.querySelector('#current-24hour');
     
   let storedData; // created variable to store the weather data from the most-recently searched location
 
@@ -32,12 +33,38 @@ const displayHandler = (function handleDisplay() {
   }
 
     // changes the displayed content of the temperature span to °F/°C
-  function changeTempSpan() {
+  function changeTempDisplays() {
+
+    while (current24Hour.firstChild) {
+              current24Hour.removeChild(current24Hour.firstChild);
+    }
    
       if (fahrenheit === true) {
-          tempSpan.textContent = `${storedData.tempFDay1} °F`;
+        tempSpan.textContent = `${storedData.tempFDay1} °F`;
+        storedData.hour24Day1.forEach((hour) => {
+          console.log(`${hour.time}, ${hour.temp_f}°F`);
+          let holder = document.createElement('div');
+            let timeDiv = document.createElement('div');
+            let tempDiv = document.createElement('div');
+            timeDiv.textContent = `${(hour.time).slice(-5)}`;
+            tempDiv.textContent = `${hour.temp_f}°F`;
+            holder.appendChild(timeDiv);
+            holder.appendChild(tempDiv);
+            current24Hour.appendChild(holder)
+          });
         } else {
-          tempSpan.textContent = `${storedData.tempCDay1} °C`;
+        tempSpan.textContent = `${storedData.tempCDay1} °C`;
+        storedData.hour24Day1.forEach((hour) => {
+          console.log(`${hour.time}, ${hour.temp_c}°C`);
+          let holder = document.createElement('div');
+            let timeDiv = document.createElement('div');
+            let tempDiv = document.createElement('div');
+            timeDiv.textContent = `${(hour.time).slice(-5)}`;
+            tempDiv.textContent = `${hour.temp_c}°C`;
+            holder.appendChild(timeDiv);
+            holder.appendChild(tempDiv);
+            current24Hour.appendChild(holder)
+          });
         }
   }
 
@@ -46,7 +73,7 @@ const displayHandler = (function handleDisplay() {
   
       toggleFTemp();
       tempBtn.textContent = fahrenheit ? "°F" : "°C";
-      changeTempSpan();
+      changeTempDisplays();
       
   });
 
@@ -70,15 +97,52 @@ const displayHandler = (function handleDisplay() {
     locationTitle.textContent = "";
     loadingDiv.textContent = "Loading...";
 
+    while (current24Hour.firstChild) {
+              current24Hour.removeChild(current24Hour.firstChild);
+    }
+    
+    
+
     getForecastDataFor(getLocationValue(), 3)
       .then((data) => {
         locationTitle.textContent = `${data.name}, ${data.region}, ${data.country}`;
         timeSpan.textContent = data.dateDay1;
+
+    
         if (fahrenheit === true) {
           tempSpan.textContent = `${data.tempFDay1} °F`;
+          
+          data.hour24Day1.forEach((hour) => {
+            console.log(`${hour.time}, ${hour.temp_f}°F`);
+            let holder = document.createElement('div');
+            let timeDiv = document.createElement('div');
+            let tempDiv = document.createElement('div');
+            timeDiv.textContent = `${(hour.time).slice(-5)}`;
+            tempDiv.textContent = `${hour.temp_f}°F`;
+            holder.appendChild(timeDiv);
+            holder.appendChild(tempDiv);
+            current24Hour.appendChild(holder)
+          });
+
         } else {
           tempSpan.textContent = `${data.tempCDay1} °C`;
+
+          
+          data.hour24Day1.forEach((hour) => {
+            console.log(`${hour.time}, ${hour.temp_c}°C`);
+            let holder = document.createElement('div');
+            let timeDiv = document.createElement('div');
+            let tempDiv = document.createElement('div');
+            timeDiv.textContent = `${(hour.time).slice(-5)}`;
+            tempDiv.textContent = `${hour.temp_c}°C`;
+            holder.appendChild(timeDiv);
+            holder.appendChild(tempDiv);
+            current24Hour.appendChild(holder)
+          });
+
         }
+
+        
         weatherSpan.textContent = data.conditionDay1;
         sunsetSpan.textContent = data.sunsetDay1;
           loadingDiv.textContent = "";

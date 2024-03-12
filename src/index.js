@@ -21,3 +21,16 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=DQzLlyYAdHOpDOcKi4YUH5xjz
         .catch(e => {
                 console.log(e)
         });
+
+
+getForecastDataFor("New York", 3).then((data) => {
+        let day1Hours = data.hour24Day1;
+
+        console.log(data.hour24Day1);
+
+        day1Hours.forEach((hour) => {
+                console.log(`${hour.time}, ${hour.temp_f}°F`);
+        })
+
+
+})
