@@ -25,10 +25,13 @@
         <button type="button" id="temp-btn" class="caveat-font"></button>
       </div>
 
+      <div class="loading"></div>
+
       <h2>Where you wanna go?</h2>
-      <div class="display">
+
+      <div class="display hidden" id="display">
         <div class="current-weather-item">
-          Day & Time: <span class="current-content" id="current-time"></span>
+          Today: <span class="current-content" id="current-time"></span>
         </div>
         <div class="current-weather-item">
           Max Temp: <span class="current-content" id="current-temp"></span>
@@ -45,7 +48,22 @@
             <!-- For Each Hour, I want to create a div that displays the time, max & min temps -->
           </div>
         </div>
-        <div class="loading"></div>
+        <div class="tomorrow-weather"> <h3>Tomorrow</h3>
+          <div class="tmo-weather-item">
+            Date: <span class="tmo-content" id="tmo-time"></span>
+          </div>
+          <div class="tmo-weather-item">
+            Max Temp: <span class="tmo-content" id="tmo-temp"></span>
+          </div>
+          <div class="tmo-weather-item">
+            Weather: <span class="tmo-content" id="tmo-weather"></span>
+          </div>
+          <div class="tmo-weather-item">
+            Sunset: <span class="tmo-content" id="tmo-sunset"></span>
+          </div>
+        </div>
+        <div class="day-after-weather"></div>
+        
       </div>
     </div>
 

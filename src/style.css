@@ -31,12 +31,16 @@ h2 {
   align-self: center;
 }
 
+h3{
+  text-decoration: underline;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 750px;
-  height: 500px;
+  width: 800px;
+  height: 700px;
   background-color: rgba(181, 234, 183, 0.911);
   padding: 50px;
   border-radius: 50px;
@@ -64,7 +68,7 @@ h2 {
   margin-left: 10px;
 }
 
-.current-weather-item {
+.current-weather-item, .tmo-weather-item {
   margin: 10px 0px 0px 0px;
   font-weight: 600;
 }
@@ -154,8 +158,6 @@ input {
   align-items: center;
 }
 
-/* #current-24hour > div > div {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-} */
+.hidden {
+  display: none;
+}

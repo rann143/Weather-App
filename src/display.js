@@ -2,6 +2,7 @@ import { getForecastDataFor } from "./api-interactions";
 
 const displayHandler = (function handleDisplay() {
 
+  const weatherDisplay = document.querySelector('#display');
   const locationInput = document.querySelector("#location-input");
   const searchBtn = document.querySelector("#search-btn");
   const locationTitle = document.querySelector("h2");
@@ -11,6 +12,13 @@ const displayHandler = (function handleDisplay() {
   const tempSpan = document.querySelector("#current-temp");
   const weatherSpan = document.querySelector("#current-weather");
   const sunsetSpan = document.querySelector("#current-sunset");
+
+  const tmoTimeSpan = document.querySelector("#tmo-time");
+  const tmoTempSpan = document.querySelector("#tmo-temp");
+  const tmoWeatherSpan = document.querySelector("#tmo-weather");
+  const tmoSunsetSpan = document.querySelector("#tmo-sunset");
+
+
   const loadingDiv = document.querySelector(".loading");
   const current24Hour = document.querySelector('#current-24hour');
     
@@ -41,6 +49,7 @@ const displayHandler = (function handleDisplay() {
    
       if (fahrenheit === true) {
         tempSpan.textContent = `${storedData.tempFDay1} °F`;
+        tmoTempSpan.textContent = `${storedData.tempFDay2} °F`;
         storedData.hour24Day1.forEach((hour) => {
           console.log(`${hour.time}, ${hour.temp_f}°F`);
           let holder = document.createElement('div');
@@ -54,6 +63,7 @@ const displayHandler = (function handleDisplay() {
           });
         } else {
         tempSpan.textContent = `${storedData.tempCDay1} °C`;
+        tmoTempSpan.textContent = `${storedData.tempCDay2} °C`;
         storedData.hour24Day1.forEach((hour) => {
           console.log(`${hour.time}, ${hour.temp_c}°C`);
           let holder = document.createElement('div');
@@ -83,6 +93,10 @@ const displayHandler = (function handleDisplay() {
     tempSpan.textContent = "";
     weatherSpan.textContent = "";
     sunsetSpan.textContent = "";
+    tmoTimeSpan.textContent = "";
+    tmoTempSpan.textContent = "";
+    tmoWeatherSpan.textContent = "";
+    tmoSunsetSpan.textContent = "";
   }
 
     // fetches and displays content from searched location
@@ -92,6 +106,10 @@ const displayHandler = (function handleDisplay() {
     if (getLocationValue() === "") {
       loadingDiv.textContent = "Enter a location";
       return loadingDiv.textContent;
+    }
+
+    if (weatherDisplay.classList.contains('hidden')) {
+      weatherDisplay.classList.remove('hidden');
     }
 
     locationTitle.textContent = "";
@@ -106,11 +124,14 @@ const displayHandler = (function handleDisplay() {
     getForecastDataFor(getLocationValue(), 3)
       .then((data) => {
         locationTitle.textContent = `${data.name}, ${data.region}, ${data.country}`;
+
         timeSpan.textContent = data.dateDay1;
+        tmoTimeSpan.textContent = data.dateDay2;
 
     
         if (fahrenheit === true) {
           tempSpan.textContent = `${data.tempFDay1} °F`;
+          tmoTempSpan.textContent = `${data.tempFDay2} °F`;
           
           data.hour24Day1.forEach((hour) => {
             console.log(`${hour.time}, ${hour.temp_f}°F`);
@@ -126,6 +147,7 @@ const displayHandler = (function handleDisplay() {
 
         } else {
           tempSpan.textContent = `${data.tempCDay1} °C`;
+          tmoTempSpan.textContent = `${data.tempCDay2} °C`;
 
           
           data.hour24Day1.forEach((hour) => {
@@ -142,9 +164,10 @@ const displayHandler = (function handleDisplay() {
 
         }
 
-        
         weatherSpan.textContent = data.conditionDay1;
         sunsetSpan.textContent = data.sunsetDay1;
+        tmoWeatherSpan.textContent = data.conditionDay2;
+        tmoSunsetSpan.textContent = data.sunsetDay2;
           loadingDiv.textContent = "";
           storedData = data;
           console.log(storedData.name)
