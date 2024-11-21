@@ -9,7 +9,7 @@ async function getForecastDataFor(city, days) {
 
   try {
     let response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=6ec50ea541c74813b6d174204240803&q=${city}&days=${days}`,
+      `https://api.weatherapi.com/v1/forecast.json?key=6ec50ea541c74813b6d174204240803&q=${city}&days=${days}`, {mode:'cors'}
     );
 
     if (!response.ok) {
